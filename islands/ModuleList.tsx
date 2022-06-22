@@ -11,9 +11,9 @@ type ModuleListProps = {
 export default function ModuleList(props: ModuleListProps) {
   const modules = props.modules;
   return (
-    <ul class={ tw`list-disc` }>
-      { modules.map( mod => {
-        return (<ModuleItem module={mod} />)
+    <ul class={ tw`list-none` }>
+      { modules.map( (mod: Module, index: number) => {
+        return (<ModuleItem rank={ index + 1} module={mod} />)
       }) }
     </ul>
   )
