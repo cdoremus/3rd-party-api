@@ -27,7 +27,6 @@ const fetchModules = async (): Promise<Array<Module>> => {
 
 export const handler = async (_req: Request, _ctx: HandlerContext): Response => {
   const resp = await fetchModules();
-  console.log(JSON.stringify(resp));
-  // @ts-ignore adsfasd
-  return new Response(resp);
+  // console.log(JSON.stringify(resp));
+  return new Response(JSON.stringify(resp));
 };
