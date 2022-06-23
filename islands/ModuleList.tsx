@@ -1,7 +1,7 @@
 /** @jsx h */
 import { h } from "preact";
 import { tw } from "twind";
-import { Module } from "../routes/index.tsx";
+import { Module } from "../types.ts";
 import ModuleItem from "./ModuleItem.tsx";
 
 type ModuleListProps = {

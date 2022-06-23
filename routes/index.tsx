@@ -4,19 +4,9 @@
 import { h } from 'preact';
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import ModuleList from "../islands/ModuleList.tsx";
+import { ThirdPartyApi } from "../types.ts";
 import { tw } from "twind";
 
-export type Module = {
-  name: string;
-  description: string;
-  popularity_score: number;
-  versions?: Array<string>;
-  latest_version: string;
-}
-
-type ThirdPartyApi = {
-  items: Module[];
-}
 
 export const handler: Handlers<Module[] | null> = {
   async GET(_: Request, ctx: HandlerContext) {
