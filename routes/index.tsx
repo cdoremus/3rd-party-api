@@ -1,9 +1,9 @@
-// @ts-nocheck
+// @ts-nocheck handler type checks
 
 /** @jsx h */
 import { h } from 'preact';
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
-import ModuleList from "../islands/ModuleList.tsx";
+import ModuleList from "../components/ModuleList.tsx";
 import { ThirdPartyApi } from "../types.ts";
 import { tw } from "twind";
 
