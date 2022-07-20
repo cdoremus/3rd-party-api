@@ -13,7 +13,7 @@ type PageData = {
 }
 export const handler: Handlers<PageData | null> = {
   async GET(_: Request, ctx: HandlerContext) {
-    const resp: ThirdPartyApi = await fetch(`https://apiland.deno.dev/v2/modules`);
+    const resp: ThirdPartyApi = await fetch(`https://apiland.deno.dev/v2/modules?limit=100`);
     if (resp.status === 404) {
       return ctx.render(null);
     }
@@ -28,8 +28,12 @@ export const handler: Handlers<PageData | null> = {
     const resp: ThirdPartyApi = await fetch(`https://apiland.deno.dev/v2/modules`);
     const data = await resp.json();
     const modules: Module[] = data.items;
-
-    const found = modules.filter(item => item.description?.includes(searchTerm) || item?.name.includes(searchTerm));
+    let found = []
+    if (searchTerm !== "") {
+      found = modules.filter(item => item.description?.includes(searchTerm) || item?.name.includes(searchTerm));
+    } else {
+      found = modules;
+    }
     // console.log("found items: ", found)
     return ctx.render({modules: found, searchTerm});
   }
