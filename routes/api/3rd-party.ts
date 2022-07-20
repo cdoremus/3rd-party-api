@@ -16,7 +16,7 @@ const fetchModules = async (): Promise<Array<Module>> => {
 }
 
 
-export const handler = async (_req: Request, _ctx: HandlerContext): Response => {
+export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Response> => {
   const resp = await fetchModules();
   // console.log(JSON.stringify(resp));
   return new Response(JSON.stringify(resp));
