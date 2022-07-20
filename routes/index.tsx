@@ -46,7 +46,6 @@ export default function Page({ data }: PageProps<PageData | null>) {
 
   return (
     <div  class={tw`p-4 mx-auto max-w-screen-md`}>
-      <h1 class={tw`mb-2 text-xl font-bold`}>Experimental API for Deno Third-Party Modules Demo</h1>
       <div class={tw`flex flex-row`}>
         <div class={tw`text-xl mr-2`}>Search: </div>
         <div class={tw``}>
