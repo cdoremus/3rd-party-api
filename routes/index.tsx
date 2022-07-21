@@ -2,10 +2,11 @@
 
 /** @jsx h */
 import { h } from 'preact';
+import { tw } from "twind";
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import ModuleList from "../components/ModuleList.tsx";
 import { ThirdPartyApi, Module } from "../types.ts";
-import { tw } from "twind";
+import Search from '../components/Search.tsx';
 
 type PageData = {
   modules: Module[];
@@ -46,24 +47,10 @@ export default function Page({ data }: PageProps<PageData | null>) {
 
   return (
     <div  class={tw`p-4 mx-auto max-w-screen-md`}>
-      <div class={tw`flex flex-row`}>
-        <div class={tw`text-xl mr-2`}>Search: </div>
-        <div class={tw``}>
-          <form method="post">
-            <input
-              type="text"
-              name="search"
-              id="search"
-              value={searchTerm}
-              class={tw`border w-full`}
-            />
-          </form>
-        </div>
-        <a class={tw`w-full text-center underline`} href="/">Show All Modules</a>
-      </div>
+      <Search searchTerm={searchTerm} />
       {!modules || modules.length === 0
-      ? <h1 class={tw`text-left grow w-full`}>Modules not found: </h1>
-      : <ModuleList modules={modules} />
+        ? <h1 class={tw`text-left grow w-full`}>Modules not found: </h1>
+        : <ModuleList modules={modules} />
       }
     </div>
   );
