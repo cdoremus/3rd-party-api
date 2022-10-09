@@ -1,10 +1,8 @@
-/** @jsx h */
-import { h, Fragment } from "preact";
 import { tw } from "twind";
 
 export default function About() {
   return (
-    <Fragment>
+    <div>
       <h1 class={tw`text-center text-xl font-bold`}>About the Experimental Deno API</h1>
       <p>
       The data displayed by the app comes from the <a class={tw`underline`} href="https://deno.land/x">Deno third-party module registry</a>
@@ -17,6 +15,6 @@ export default function About() {
       <p>
       API Documentation is available at <a class={tw`underline`} href="https://apiland.deno.dev" target="_blank">https://apiland.deno.dev</a>.
       </p>
-    </Fragment>
+    </div>
   )
 }

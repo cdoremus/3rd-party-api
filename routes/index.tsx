@@ -1,7 +1,4 @@
 // @ts-nocheck handler type checks
-
-/** @jsx h */
-import { h } from 'preact';
 import { tw } from "twind";
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import ModuleList from "../components/ModuleList.tsx";
@@ -46,7 +43,7 @@ export default function Page({ data }: PageProps<PageData | null>) {
   const {modules, searchTerm} = data;
 
   return (
-    <div  class={tw`p-4 mx-auto max-w-screen-md`}>
+    <div>
       <Search searchTerm={searchTerm} />
       {!modules || modules.length === 0
         ? <h1 class={tw`text-left grow w-full`}>Modules not found: </h1>
