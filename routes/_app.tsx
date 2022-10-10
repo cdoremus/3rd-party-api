@@ -1,6 +1,10 @@
+import { createContext } from "preact";
 import { asset, Head } from "$fresh/runtime.ts";
 import { AppProps } from "$fresh/src/server/types.ts";
 import MenuLink from "../islands/MenuLink.tsx";
+import state, { AppStateSignal } from "../utils/state.ts";
+
+export const AppState = createContext({} as AppStateSignal);
 
 export default function App({ Component }: AppProps) {
   return (
@@ -14,7 +18,9 @@ export default function App({ Component }: AppProps) {
           <div><MenuLink /></div>
         </header>
         <div class="p-4 mx-auto max-w-screen-md">
-          <Component />
+          <AppState.Provider value={state}>
+            <Component />
+          </AppState.Provider>
         </div>
         <footer class="border">
           <div class="text-center">Created with the <a href="https://fresh.deno.dev" target="_blank">FRESH<img class="inline underline" src="logo.svg"/></a> framework</div>
