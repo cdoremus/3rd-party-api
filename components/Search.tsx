@@ -1,4 +1,3 @@
-import { tw } from "twind";
 
 type SearchProps = {
   searchTerm: string;
@@ -6,8 +5,8 @@ type SearchProps = {
 
 export default function Search(props: SearchProps) {
   return (
-    <div class={tw`flex flex-row`}>
-      <div class={tw`text-xl mr-2`}>Search: </div>
+    <div class="flex flex-row">
+      <div class="text-xl mr-2">Search: </div>
       <div>
         <form method="post">
           <input
@@ -15,11 +14,11 @@ export default function Search(props: SearchProps) {
             name="search"
             id="search"
             value={props.searchTerm}
-            class={tw`border w-full`}
+            class="border w-full"
           />
         </form>
       </div>
-    <a class={tw`w-full text-center underline`} href="/">Show All Modules</a>
+    <a class="w-full text-center underline" href="/">Show All Modules</a>
   </div>
   )
 }

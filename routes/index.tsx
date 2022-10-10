@@ -1,5 +1,3 @@
-// @ts-nocheck handler type checks
-import { tw } from "twind";
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import ModuleList from "../components/ModuleList.tsx";
 import { ThirdPartyApi, Module } from "../types.ts";
@@ -32,7 +30,6 @@ export const handler: Handlers<PageData | null> = {
     } else {
       found = modules;
     }
-    // console.log("found items: ", found)
     return ctx.render({modules: found, searchTerm});
   }
 
@@ -46,7 +43,7 @@ export default function Page({ data }: PageProps<PageData | null>) {
     <div>
       <Search searchTerm={searchTerm} />
       {!modules || modules.length === 0
-        ? <h1 class={tw`text-left grow w-full`}>Modules not found: </h1>
+        ? <h1 class="text-left grow w-full">Modules not found: </h1>
         : <ModuleList modules={modules} />
       }
     </div>
