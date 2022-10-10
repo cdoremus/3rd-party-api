@@ -4,8 +4,5 @@ export type Module = {
   popularity_score: number;
   versions?: Array<string>;
   latest_version: string;
-}
-
-export type ThirdPartyApi = {
-  items: Module[];
+  star_count: number;
 }
