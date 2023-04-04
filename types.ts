@@ -25,6 +25,9 @@ export type ThirdPartyApi = {
   items: Module[];
 }
 
-export type OrderOptions = "score" | "stars" | "75_25";
-
+export type OrderOptions =
+  "score" | // popularity score
+  "stars" | // Github stars
+  "75_25"   // weighted value consisting of 75% score and 25% stars
+;
 

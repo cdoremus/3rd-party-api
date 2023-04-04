@@ -1,8 +1,8 @@
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import ModuleList from "../components/ModuleList.tsx";
 import { fetch500, sortModules } from "../utils/fetch.ts";
-import { ThirdPartyApi, Module, OrderOptions } from "../types.ts";
-import OrderByForm from "../components/SortOrderDropDown.tsx";
+import { Module, OrderOptions } from "../types.ts";
+import OrderByForm from "../islands/SortOrderDropDown.tsx";
 
 type PageData = {
   modules: Module[];
@@ -35,6 +35,7 @@ export default function Page({ data }: PageProps<PageData>) {
   return (
     <div>
       <OrderByForm order={sortOrder} />
+      <hr class="h-1 bg-blue-200" />
       {!modules || modules.length === 0
         ? <h1 class="text-left grow w-full">Modules not found: </h1>
         : <ModuleList modules={modules} />
