@@ -16,8 +16,11 @@ export type ModuleDetails = {
     sessions_30_days: number;
     users_30_day: number;
   }
-
 }
 export type ThirdPartyApi = {
   items: Module[];
 }
+
+export type OrderOptions = "score" | "stars" | "75_25";
+
+

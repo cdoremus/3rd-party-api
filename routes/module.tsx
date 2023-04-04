@@ -1,48 +1,40 @@
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import ModuleList from "../components/ModuleList.tsx";
-import { ThirdPartyApi, Module } from "../types.ts";
-import Search from '../components/Search.tsx';
+import { fetch500, sortModules } from "../utils/fetch.ts";
+import { ThirdPartyApi, Module, OrderOptions } from "../types.ts";
+import OrderByForm from "../components/SortOrderDropDown.tsx";
 
 type PageData = {
   modules: Module[];
-  searchTerm: string;
+  sortOrder: OrderOptions;
 }
 
 export const handler: Handlers<PageData | null> = {
   async GET(_: Request, ctx: HandlerContext) {
-    const resp = await fetch(`https://apiland.deno.dev/v2/modules?limit=100`);
-    if (resp.status === 404) {
-      return ctx.render(null);
-    }
-    const ret: ThirdPartyApi = await resp.json();
-    return ctx.render({modules: ret.items, searchTerm: ""});
+    const items: Module[] = await fetch500();
+    console.log("GET called: ");
+    sortModules(items)
+    return ctx.render({modules: items});
   },
 
   async POST(req: Request, ctx: HandlerContext) {
     const formData = await req.formData();
-    const searchTerm = formData.get("search")?.trim();
-    console.log("search term: ", searchTerm);
-    const resp = await fetch(`https://apiland.deno.dev/v2/modules`);
-    const data: ThirdPartyApi = await resp.json();
-    const modules: Module[] = data.items;
-    let found = []
-    if (searchTerm !== "") {
-      found = modules.filter(item => item.description?.includes(searchTerm) || item?.name.includes(searchTerm));
-    } else {
-      found = modules;
-    }
-    return ctx.render({modules: found, searchTerm});
+    const sortOrder = formData.get("order_by") as OrderOptions;
+    const items: Module[] = await fetch500();
+    console.log("Mod count in POST: ", sortOrder);
+    sortModules(items, sortOrder);
+    return ctx.render({modules: items, sortOrder});
+    // return ctx.render({modules: found, searchTerm});
   }
 
 };
 
 
-export default function Page({ data }: PageProps<PageData | null>) {
-  const {modules, searchTerm} = data;
-
+export default function Page({ data }: PageProps<PageData>) {
+  const {modules, sortOrder} = data;
   return (
     <div>
-      <Search searchTerm={searchTerm} />
+      <OrderByForm order={sortOrder} />
       {!modules || modules.length === 0
         ? <h1 class="text-left grow w-full">Modules not found: </h1>
         : <ModuleList modules={modules} />
