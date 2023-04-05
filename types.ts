@@ -31,3 +31,7 @@ export type OrderOptions =
   "75_25"   // weighted value consisting of 75% score and 25% stars
 ;
 
+export type DropDownFormRef = {
+  submit: () => void;
+}
+

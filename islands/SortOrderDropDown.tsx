@@ -1,5 +1,5 @@
 import { useRef } from "preact/hooks";
-import { OrderOptions } from "../types.ts";
+import { DropDownFormRef, OrderOptions } from "../types.ts";
 
 type OrderByProps = {
   order: OrderOptions;
@@ -7,14 +7,15 @@ type OrderByProps = {
 
 export default function SortOrderDropDown(props: OrderByProps) {
   const order = props.order ?? "score";
-  const formRef = useRef(null);
+  const formRef = useRef<DropDownFormRef>();
 
   // deno-lint-ignore no-explicit-any
   const handleOptionChange = (event: any) => {
     const sortOrder = event.target.value
-    // console.log("option selected: ", sortOrder);
+    console.log("option selected: ", sortOrder);
     // handle form submission
-    (formRef.current)?.submit();
+    // formRef.current ? (formRef.current as {submit: () => void}).submit() : null ;
+    formRef.current ? formRef.current.submit() : null ;
   };
 
   return (
