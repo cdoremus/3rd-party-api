@@ -14,7 +14,7 @@ export default function App({ Component }: AppProps) {
       </Head>
       <body class="m-x-50 m-y-0 p-4 mx-auto max-w-screen-md">
         <header class="flex flex-row justify-between border border-black p-2 pb-5">
-          <h1 class="grow-1 text-center text-xl font-bold ml-20">Experimental API for Deno Third-Party Modules Demo</h1>
+          <h1 class="grow-1.1 text-center text-2xl font-bold mx-20">Deno Third-Party Module API Demo</h1>
           <div><MenuLink /></div>
         </header>
         <div class="p-4 mx-auto max-w-screen-md">
