@@ -2,17 +2,17 @@
 export default function About() {
   return (
     <div>
-      <h1 class="text-center text-xl font-bold">About the Deno Third-Party API</h1>
+      <h1 class="text-center text-xl font-bold">About the Deno Third-Party API Demo App</h1>
       <p>
-      The data displayed by the app comes from the <a class="underline" href="https://deno.land/x">Deno third-party module registry</a>
-      {' '}which includes a popularity score for each module displayed in parentheses and the Github
+      The data displayed by this app comes from the <a class="underline" href="https://deno.land/x">Deno third-party module registry</a>
+      {' '}which includes a list with each module shown with a popularity score displayed in parentheses and the Github
       {' '}star count after the GH icon.
       {' '}<a class="underline" href="https://github.com/denoland/dotland/issues/2133">This proposal</a> explains the rationale behind this score.
 
       </p>
       <p>
       {' '}The API was used on the home page to show the top 500 modules ranked by popularity score which is calculated from
-      {' '}the number of requests done to each module over a 30 day period using a <b>https://deno.land/x/[module]</b> import url.
+      {' '}the number of requests done to each module over a 30 day period when the <b>https://deno.land/x/[module]</b> import url was called.
       {' '}Besides the popularity score, the data was sorted by Github stars and a metric created by weighing
       {' '}popularity score at 75% and Github stars 25%.  Each sorted data set can be displayed using the drop down on the top of
       {' '}the page.
